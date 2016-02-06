@@ -115,7 +115,7 @@ namespace llogl
         typedef shader<shader_type::fragment> fragment_shader;
         typedef shader<shader_type::compute> compute_shader;
         typedef shader<shader_type::tess_control> tess_control_shader;
-        typedef shader<shader_type::tess_evalutation> tess_evaluation_shader;
+        typedef shader<shader_type::tess_evaluation> tess_evaluation_shader;
     }
 
     using namespace v1;
