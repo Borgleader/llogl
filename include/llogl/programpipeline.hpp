@@ -51,6 +51,11 @@ namespace llogl
                 gl::UseProgramStages(id.get(), static_cast<GLbitfield>(stage), get_id(program));
             }
 
+            void unuse_program_stages(program_stages stage)
+            {
+                gl::UseProgramStages(id.get(), static_cast<GLbitfield>(stage), 0);
+            }
+
             static GLuint create()
             {
                 GLuint id = 0;

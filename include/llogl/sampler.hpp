@@ -8,50 +8,51 @@ namespace llogl
 {
     namespace v1
     {
-        class vertex_array: noncopyable<vertex_array>
+        class sampler : noncopyable<sampler>
         {
         public:
-            vertex_array(): id()
+            sampler() : id()
             {
             }
 
-            vertex_array(vertex_array&& other): id(std::move(other.id))
+            sampler(sampler&& other) : id(std::move(other.id))
             {
             }
 
-            vertex_array& operator=(vertex_array&& other)
+            sampler& operator=(sampler&& other)
             {
                 id = std::move(other.id);
                 return *this;
             }
 
-            void bind()
+            void bind(GLuint unit)
             {
-                gl::BindVertexArray(id.get());
+                gl::BindSampler(unit, id.get());
             }
 
-            void unbind()
+
+            void unbind(GLuint unit)
             {
-                gl::BindVertexArray(0);
+                gl::BindSampler(unit, 0);
             }
 
             static GLuint create()
             {
-                GLuint id;
-                gl::GenVertexArrays(1, &id);
+                GLuint id = 0;
+                gl::GenSamplers(1, &id);
                 return id;
             }
 
             static void destroy(GLuint& id)
             {
-                gl::DeleteVertexArrays(1, &id);
+                gl::DeleteSamplers(1, &id);
                 id = 0;
             }
 
         private:
-            glid<vertex_array> id;
+            glid<sampler> id;
 
-            friend GLuint get_id<vertex_array>(const vertex_array& t);
+            friend GLuint get_id<sampler>(const sampler& t);
         };
     }
 

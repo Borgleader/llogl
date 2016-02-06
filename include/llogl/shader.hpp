@@ -82,13 +82,10 @@ namespace llogl
                     std::string error;
                 };
 
-                if(is_compiled != gl::TRUE_)
-                    throw shader_compilation_exception(std::to_string(compile_error));
-                
                 GLint log_length = 0;
                 gl::GetShaderiv(shader.id.get(), gl::INFO_LOG_LENGTH, &log_length);
 
-                if(log_length > 1)
+                if (log_length > 1)
                 {
                     std::string tmp_log;
                     std::string& log = out_log ? *out_log : tmp_log;
@@ -100,6 +97,9 @@ namespace llogl
                 {
                     out_log->clear();
                 }
+
+                if(is_compiled != gl::TRUE_)
+                    throw shader_compilation_exception(std::to_string(compile_error));
 
                 return shader;
             }

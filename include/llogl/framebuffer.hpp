@@ -15,7 +15,7 @@ namespace llogl
             {
             }
 
-            framebuffer(framebuffer<T>&& other): id(std::move(other.id))
+            framebuffer(framebuffer&& other): id(std::move(other.id))
             {
             }
 
@@ -55,7 +55,7 @@ namespace llogl
         private:
             glid<framebuffer> id;
 
-            friend GLuint getId<framebuffer>(const framebuffer& t);
+            friend GLuint get_id<framebuffer>(const framebuffer& t);
         };
     }
 

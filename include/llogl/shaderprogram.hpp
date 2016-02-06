@@ -38,6 +38,12 @@ namespace llogl
                 gl::AttachShader(id.get(), get_id(shader));
             }
 
+            template<shader_type T>
+            void detach_shader(const shader<T>& shader)
+            {
+                gl::DetachShader(id.get(), get_id(shader));
+            }
+
             void bind_attribute(size_t attrib_index, std::string attribute)
             {
                 gl::BindAttribLocation(id.get(), attrib_index, attribute.c_str());
@@ -61,13 +67,10 @@ namespace llogl
                     std::string error;
                 };
 
-                if(is_linked != gl::TRUE_)
-                    throw shader_compilation_exception(std::to_string(link_error));
-
                 GLint log_length = 0;
                 gl::GetProgramiv(id.get(), gl::INFO_LOG_LENGTH, &log_length);
 
-                if(log_length > 1)
+                if (log_length > 1)
                 {
                     std::string tmp_log;
                     std::string& log = out_log ? *out_log : tmp_log;
@@ -79,6 +82,9 @@ namespace llogl
                 {
                     out_log->clear();
                 }
+
+                if(is_linked != gl::TRUE_)
+                    throw shader_compilation_exception(std::to_string(link_error));
             }
 
             GLuint get_uniform_location(std::string name)
