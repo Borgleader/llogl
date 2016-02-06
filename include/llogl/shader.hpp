@@ -20,7 +20,7 @@ namespace llogl
             fragment = gl::FRAGMENT_SHADER,
             compute = gl::COMPUTE_SHADER,
             tess_control = gl::TESS_CONTROL_SHADER,
-            tess_evalutation = gl::TESS_EVALUATION_SHADER,
+            tess_evaluation = gl::TESS_EVALUATION_SHADER,
         };
 
         template <shader_type T>
