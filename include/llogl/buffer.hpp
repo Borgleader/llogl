@@ -8,12 +8,13 @@ namespace llogl
 {
     namespace v1
     {
-        enum class buffer_type: GLuint
+        enum class buffer_type : GLuint
         {
             array_buffer = gl::ARRAY_BUFFER,
             atomic_count_buffer = gl::ATOMIC_COUNTER_BUFFER,
             copy_read_buffer = gl::COPY_READ_BUFFER,
             copy_write_buffer = gl::COPY_WRITE_BUFFER,
+            draw_indirect_buffer = gl::DRAW_INDIRECT_BUFFER,
             element_array_buffer = gl::ELEMENT_ARRAY_BUFFER,
             pixel_pack_buffer = gl::PIXEL_PACK_BUFFER,
             texture_buffer = gl::TEXTURE_BUFFER,
