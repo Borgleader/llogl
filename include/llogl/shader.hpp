@@ -63,7 +63,7 @@ namespace llogl
             {
                 shader<T> shader;
 
-                GLint shader_length = shader_source.length();
+                GLint shader_length = GLint(shader_source.length());
                 auto shader_cstr = shader_source.c_str();
 
                 gl::ShaderSource(shader.id.get(), 1, &shader_cstr, &shader_length);

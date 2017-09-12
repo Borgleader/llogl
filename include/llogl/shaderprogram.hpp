@@ -44,7 +44,7 @@ namespace llogl
                 gl::DetachShader(id.get(), get_id(shader));
             }
 
-            void bind_attribute(size_t attrib_index, std::string attribute)
+            void bind_attribute(GLuint attrib_index, std::string attribute)
             {
                 gl::BindAttribLocation(id.get(), attrib_index, attribute.c_str());
             }
